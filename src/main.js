@@ -6,19 +6,17 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
-import EventBus from '@/utils/eventBus';
 
 // Components
 import App from './App.vue'
+import store from "./store"; // 引入 Vuex Store
 
 // Composables
 import { createApp } from 'vue'
 
 const app = createApp(App)
 
-// 註冊 EventBus 為全局屬性
-app.config.globalProperties.$eventBus = EventBus;
-
 registerPlugins(app)
 
+app.use(store); // 安裝 Vuex 插件
 app.mount('#app')

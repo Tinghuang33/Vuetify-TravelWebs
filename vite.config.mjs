@@ -71,4 +71,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist', // 確保構建輸出到 dist 目錄
+  },
 })

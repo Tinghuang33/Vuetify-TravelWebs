@@ -1,38 +1,15 @@
 <template>
-    <v-card>
-      <v-tabs 
-      v-model="tab" 
-      align-tabs="center" 
-      color="deep-purple-accent-4"
-      height="50"
-      >
-        <v-tab class="text-h6"
-          :value="1"
-          :to="{ path: '/' }"
-          >首頁
-        </v-tab>
-        <v-tab class="text-h6"
-          :value="2"
-          :to="{ path: '/itinerary' }"
-          >自訂行程
-        </v-tab>
-        <v-tab class="text-h6"
-          :value="3"
-          :to="{ path: '/activity' }"
-          >特別活動</v-tab
-        >
-        <v-tab class="text-h6"
-          :value="4"
-          :to="{ path: '/itinerary' }"
-          >在地美食
-        </v-tab>
-      </v-tabs>
-    </v-card>
-  </template>
-  
-  <script>
-  export default {
-    name: "NavigationBar",
-  };
-  </script>
-  
+<!-- 導覽列 -->
+<div class="w3-top">
+  <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off">
+    
+    <a href="/" class="w3-bar-item w3-button"><b>Meishan</b> travelWebs</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="itinerary" class="w3-bar-item w3-button">process</a>
+      <a href="activity" class="w3-bar-item w3-button">activity</a>
+      <a href="food" class="w3-bar-item w3-button">food</a>
+    </div>
+  </div>
+</div>
+</template>

@@ -8,11 +8,23 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
+import { logEvent } from 'firebase/analytics'
+import { analytics } from '/src/firebase.js';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts(routes),
+  scrollBehavior: () => ({ top: 0 }), // 每次路由切換時滾動至頁面頂端
 })
+
+// 監控路由變化並發送 Firebase Analytics 事件
+router.afterEach((to, from) => {
+  // 每次路由變更時，記錄 page_view 事件
+  logEvent(analytics, 'page_view', {
+    page_path: to.fullPath,
+    page_title: to.name || 'untitled'
+  });
+});
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
